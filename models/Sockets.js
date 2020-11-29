@@ -16,7 +16,7 @@ class Sockets{
             socket.on('new-vote',(id)=>{
                 this.bandList.increaseVotes(id);
                 // Re-emit the new changes for all instances using 'IO'
-                io.emit('current-list',this.bandList.getBands());
+                this.io.emit('current-list',this.bandList.getBands());
 
             });
          });
