@@ -19,6 +19,14 @@ class Sockets{
                 this.io.emit('current-list',this.bandList.getBands());
 
             });
+            /* Delete a band */
+            socket.on('delete-band',(id)=>{
+                this.bandList.removeBand(id);
+                // Re-emit the new changes for all instances using 'IO'
+                this.io.emit('current-list',this.bandList.getBands());
+
+            });
+
          });
     }
 }
