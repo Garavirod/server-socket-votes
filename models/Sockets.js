@@ -26,7 +26,17 @@ class Sockets{
                 this.io.emit('current-list',this.bandList.getBands());
 
             });
+            /* Name band modifiacation */
+            socket.on('change-name-band',(data)=>{
+                this.bandList.updateBandName(data.id,data.name);
+                this.io.emit('current-list',this.bandList.getBands());
+            });
 
+            /* Add new band */
+            socket.on('add-new-band',(data)=>{
+                this.bandList.addBand(data.name);
+                this.io.emit('current-list',this.bandList.getBands());
+            });
          });
     }
 }
